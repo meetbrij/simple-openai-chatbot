@@ -85,32 +85,7 @@ On Apple Silicon Macs, Python will typically be installed under:
 
 ---
 
-## 3. Navigate to the Project Directory
-
-Open Terminal and navigate to the directory containing `serve.py`.
-
-For example:
-
-```bash
-cd ~/Documents/my-ai-agent
-```
-
-Verify that the application files are present:
-
-```bash
-ls
-```
-
-You should see something similar to:
-
-```text
-serve.py
-requirements.txt
-```
-
----
-
-## 4. Create a Virtual Environment
+## 3. Navigate to the Project Directory and Create a Virtual Environment
 
 Create a Python virtual environment inside the project directory:
 
@@ -124,7 +99,7 @@ Your project will now look similar to:
 
 ```text
 my-ai-agent/
-├── serve.py
+├── app.py
 ├── requirements.txt
 └── .venv/
 ```
@@ -219,22 +194,24 @@ Your project should look like:
 
 ```text
 my-ai-agent/
-├── serve.py
+├── app.py
 ├── requirements.txt
 ├── .env
 └── .venv/
 ```
 
-Add your Groq API key to `.env`:
+Add your OPEN AI and LangSmith key to `.env`:
 
 ```text
-GROQ_API_KEY=your_groq_api_key_here
+LANGCHAIN_API_KEY=your_api_key_here
+OPENAI_API_KEY=your_api_key_here
+
 ```
 
 Replace:
 
 ```text
-your_groq_api_key_here
+your_api_key_here
 ```
 
 with your actual Groq API key.
@@ -264,26 +241,14 @@ source .venv/bin/activate
 Then start the application:
 
 ```bash
-python serve.py
+streamlit run app.py
 ```
 
 If the application starts successfully, you should see output indicating that the FastAPI server is running on:
 
 ```text
-http://127.0.0.1:8000
+http://localhost:8501/
 ```
-
----
-
-## 10. Open the FastAPI Documentation
-
-Open the following URL in your browser:
-
-[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-This opens the **FastAPI Swagger UI**, where you can view and test the API endpoints.
-
-You should see the available endpoints exposed by the AI Agent.
 
 ---
 
@@ -310,14 +275,10 @@ source .venv/bin/activate
 ### 3. Run the application
 
 ```bash
-python serve.py
+streamlit run app.py
 ```
 
-### 4. Open the API documentation
-
-[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-### 5. Stop the application
+### 4. Stop the application
 
 When you are finished, press:
 
@@ -325,7 +286,7 @@ When you are finished, press:
 Ctrl + C
 ```
 
-### 6. Deactivate the virtual environment
+### 5. Deactivate the virtual environment
 
 ```bash
 deactivate
@@ -340,13 +301,7 @@ For subsequent runs, the entire workflow is:
 ```bash
 cd ~/Documents/my-ai-agent
 source .venv/bin/activate
-python serve.py
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8000/docs
+streamlit run app.py
 ```
 
 To stop the application:
@@ -370,7 +325,7 @@ After setup, the project should look approximately like this:
 ```text
 my-ai-agent/
 │
-├── serve.py              # FastAPI application
+├── app.py                # Streamlit application
 ├── requirements.txt      # Python dependencies
 ├── .env                  # Environment variables / API keys
 ├── .gitignore            # Files excluded from Git
